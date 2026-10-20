@@ -1,5 +1,13 @@
 #include <iostream>
-#include <array>
+
+enum CardSuit
+{
+    SUIT_TREFY,
+    SUIT_BUBNY,
+    SUIT_CHERVY,
+    SUIT_PIKI,
+    MAX_SUITS,
+};
 
 enum CardRank
 {
@@ -19,25 +27,17 @@ enum CardRank
     MAX_RANKS,
 };
 
-enum CardSuit
-{
-    SUIT_TREFY,
-    SUIT_BUBNY,
-    SUIT_CHERVY,
-    SUIT_PIKI,
-    MAX_SUITS,
-};
-
 struct Card
 {
-    CardRank rank;
     CardSuit suit;
+    CardRank rank;
 };
 
-void printCard(const Card & card)
+void printCard(const Card &card)
 {
     switch(card.rank)
     {
+
     case RANK_2: std::cout << "2"; break;
     case RANK_3: std::cout << "3"; break;
     case RANK_4: std::cout << "4"; break;
@@ -53,6 +53,7 @@ void printCard(const Card & card)
     case RANK_TUZ: std::cout << "T"; break;
         break;
     }
+
     switch(card.suit)
     {
 
@@ -64,27 +65,7 @@ void printCard(const Card & card)
     }
 }
 
-void printDeck(const std::array<Card, 52> &deck)
-{
-    for (const auto &card : deck)
-    {
-        printCard(card);
-        std::cout << ' ';
-    }
-
-    std::cout << '\n';
-}
-
 int main()
 {
-    std::array<Card, 52> deck;
 
-    int card = 0;
-    for (int suit = 0; suit < MAX_SUITS; ++suit)
-        for (int rank = 0; rank < MAX_RANKS; ++rank)
-        {
-            deck[card].suit = static_cast<CardSuit>(suit);
-            deck[card].rank = static_cast<CardRank>(rank);
-            ++card;
-        }
 }
